@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'detalles_valorizacion.dart';
 import 'valorizaciones.dart';
 import 'creacion_valorizacion.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -12,7 +13,7 @@ class _HomeState extends State<Home> {
 
   void _addValorizacion(Valorizacion valorizacion) {
     setState(() {
-      valorizaciones.add(valorizacion);
+      valorizaciones.add(valorizacion);  // Añadir valorización a la lista
     });
   }
 

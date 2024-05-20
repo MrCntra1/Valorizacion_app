@@ -52,6 +52,19 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
   }
 
   @override
+  void dispose() {
+    _numeroOrdenController.dispose();
+    _montoContratoController.dispose();
+    _nombreContratistaController.dispose();
+    _descripcionServicioController.dispose();
+    _fechaServicioController.dispose();
+    _nombreServicioController.dispose();
+    _condicionesPagoController.dispose();
+    _cantidadTotalController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -72,18 +85,25 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
           child: ListView(
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
-              _buildTextField(_montoContratoController, 'Monto del Contrato', keyboardType: TextInputType.number),
-              _buildTextField(_nombreContratistaController, 'Nombre del Contratista'),
-              _buildTextField(_descripcionServicioController, 'Descripción del Servicio'),
+              _buildTextField(_montoContratoController, 'Monto del Contrato',
+                  keyboardType: TextInputType.number),
+              _buildTextField(
+                  _nombreContratistaController, 'Nombre del Contratista'),
+              _buildTextField(
+                  _descripcionServicioController, 'Descripción del Servicio'),
               GestureDetector(
                 onTap: () => _selectDate(context),
                 child: AbsorbPointer(
-                  child: _buildTextField(_fechaServicioController, 'Fecha del Servicio', keyboardType: TextInputType.datetime),
+                  child: _buildTextField(
+                      _fechaServicioController, 'Fecha del Servicio',
+                      keyboardType: TextInputType.datetime),
                 ),
               ),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              _buildTextField(_condicionesPagoController, 'Condiciones de Pago'),
-              _buildTextField(_cantidadTotalController, 'Cantidad Total', keyboardType: TextInputType.number),
+              _buildTextField(
+                  _condicionesPagoController, 'Condiciones de Pago'),
+              _buildTextField(_cantidadTotalController, 'Cantidad Total en m3',
+                  keyboardType: TextInputType.number),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
@@ -97,7 +117,8 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label, {TextInputType keyboardType = TextInputType.text}) {
+  Widget _buildTextField(TextEditingController controller, String label,
+      {TextInputType keyboardType = TextInputType.text}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
