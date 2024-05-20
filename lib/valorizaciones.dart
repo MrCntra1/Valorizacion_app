@@ -6,13 +6,13 @@ class Entrega {
 }
 
 class Valorizacion {
-  final String numeroOrden;
-  final double montoContrato;
-  final String nombreContratista;
-  final String descripcionServicio;
-  final DateTime fechaServicio;
-  final String nombreServicio;
-  final String condicionesPago;
+  String numeroOrden;
+  double montoContrato;
+  String nombreContratista;
+  String descripcionServicio;
+  DateTime fechaServicio;
+  String nombreServicio;
+  String condicionesPago;
   double cantidadTotal;
   double cantidadRestante;
   List<Entrega> entregas;
@@ -33,4 +33,25 @@ class Valorizacion {
     entregas.add(Entrega(fecha: DateTime.now(), cantidad: cantidad));
     cantidadRestante -= cantidad;
   }
+
+  void actualizar({
+    String? numeroOrden,
+    double? montoContrato,
+    String? nombreContratista,
+    String? descripcionServicio,
+    DateTime? fechaServicio,
+    String? nombreServicio,
+    String? condicionesPago,
+    double? cantidadTotal,
+  }) {
+    if (numeroOrden != null) this.numeroOrden = numeroOrden;
+    if (montoContrato != null) this.montoContrato = montoContrato;
+    if (nombreContratista != null) this.nombreContratista = nombreContratista;
+    if (descripcionServicio != null) this.descripcionServicio = descripcionServicio;
+    if (fechaServicio != null) this.fechaServicio = fechaServicio;
+    if (nombreServicio != null) this.nombreServicio = nombreServicio;
+    if (condicionesPago != null) this.condicionesPago = condicionesPago;
+    if (cantidadTotal != null) this.cantidadTotal = cantidadTotal;
+  }
 }
+
