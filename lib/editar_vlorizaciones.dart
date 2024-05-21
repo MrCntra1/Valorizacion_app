@@ -76,6 +76,8 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
           child: ListView(
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
+              _buildTextField(_cantidadTotalController, 'Cantidad Total',
+                  keyboardType: TextInputType.number), 
               _buildTextField(_montoContratoController, 'Monto del Contrato',
                   keyboardType: TextInputType.number),
               _buildTextField(
@@ -85,8 +87,6 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
               _buildTextField(_fechaServicioController, 'Fecha del Servicio',
                   keyboardType: TextInputType.datetime),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              _buildTextField(_cantidadTotalController, 'Cantidad Total',
-                  keyboardType: TextInputType.number),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
