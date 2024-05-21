@@ -83,7 +83,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade300, Colors.white],
+            colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -125,7 +125,9 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
               onPressed: widget.valorizacion.cantidadRestante > 0
                   ? _registrarEntrega
                   : null,
-              child: Text('Registrar Entrega'),
+              child: Text('Registrar Entrega',
+                style: TextStyle(color: Colors.white,
+                ),),
             ),
             SizedBox(height: 20),
             Text('Entregas Realizadas:',
@@ -134,8 +136,10 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
               return ListTile(
                 title: Text('${entrega.cantidad} m3 entregados'),
                 subtitle: Text('Fecha: ${entrega.fecha.toString()}'),
+                
               );
             }).toList(),
+            
           ],
         ),
       ),

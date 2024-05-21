@@ -75,7 +75,7 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade300, Colors.white],
+            colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -108,7 +108,9 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: _saveForm,
-                child: Text('Guardar'),
+                child: Text('Guardar',
+                style: TextStyle(color: Colors.white,
+                ),),
               ),
             ],
           ),

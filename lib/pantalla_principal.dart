@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade300, Colors.white],
+            colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.add),
+              icon: Image.asset('lib/img/add-file.png'),
               onPressed: () async {
                 final result = await Navigator.of(context).push(
                   MaterialPageRoute(
