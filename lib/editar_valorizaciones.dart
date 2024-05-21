@@ -76,7 +76,7 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
           child: ListView(
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
-              _buildTextField(_cantidadTotalController, 'Cantidad Total',
+              _buildTextField(_cantidadTotalController, 'Cantidad Total m3',
                   keyboardType: TextInputType.number),
               _buildTextField(_montoContratoController, 'Monto del Contrato',
                   keyboardType: TextInputType.number),

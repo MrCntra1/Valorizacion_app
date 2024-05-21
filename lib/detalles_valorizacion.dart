@@ -102,9 +102,9 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
                 'Nombre del Servicio:', widget.valorizacion.nombreServicio),
             _buildDetailRow('Monto del Contrato:',
                 '\$${widget.valorizacion.montoContrato}'),
-            _buildDetailRow(
-                'Cantidad Total:', '${widget.valorizacion.cantidadTotal} m3'),
-            _buildDetailRow('Cantidad Restante:',
+            _buildDetailRow('Cantidad Total m3:',
+                '${widget.valorizacion.cantidadTotal} m3'),
+            _buildDetailRow('Cantidad Restante m3:',
                 '${widget.valorizacion.cantidadRestante} m3'),
             SizedBox(height: 20),
             TextField(
