@@ -92,8 +92,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
           children: [
             _buildDetailRow(
                 'Número de Orden:', widget.valorizacion.numeroOrden),
-            _buildDetailRow('Monto del Contrato:',
-                '\$${widget.valorizacion.montoContrato}'),
             _buildDetailRow('Nombre del Contratista:',
                 widget.valorizacion.nombreContratista),
             _buildDetailRow('Descripción del Servicio:',
@@ -102,6 +100,8 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
                 widget.valorizacion.fechaServicio.toString()),
             _buildDetailRow(
                 'Nombre del Servicio:', widget.valorizacion.nombreServicio),
+            _buildDetailRow('Monto del Contrato:',
+                '\$${widget.valorizacion.montoContrato}'),
             _buildDetailRow(
                 'Cantidad Total:', '${widget.valorizacion.cantidadTotal} m3'),
             _buildDetailRow('Cantidad Restante:',
