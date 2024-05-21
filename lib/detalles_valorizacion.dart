@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'editar_vlorizaciones.dart';
+import 'editar_valorizaciones.dart';
 import 'valorizaciones.dart';
 
 class DetalleValorizacion extends StatefulWidget {

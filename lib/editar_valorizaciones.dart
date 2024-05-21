@@ -77,7 +77,7 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
               _buildTextField(_cantidadTotalController, 'Cantidad Total',
-                  keyboardType: TextInputType.number), 
+                  keyboardType: TextInputType.number),
               _buildTextField(_montoContratoController, 'Monto del Contrato',
                   keyboardType: TextInputType.number),
               _buildTextField(
