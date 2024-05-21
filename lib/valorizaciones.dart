@@ -12,7 +12,6 @@ class Valorizacion {
   String descripcionServicio;
   DateTime fechaServicio;
   String nombreServicio;
-  String condicionesPago;
   double cantidadTotal;
   double cantidadRestante;
   List<Entrega> entregas;
@@ -24,11 +23,10 @@ class Valorizacion {
     required this.descripcionServicio,
     required this.fechaServicio,
     required this.nombreServicio,
-    required this.condicionesPago,
     required this.cantidadTotal,
-  }) : cantidadRestante = cantidadTotal,
-       entregas = [];
-  
+  })  : cantidadRestante = cantidadTotal,
+        entregas = [];
+
   void registrarEntrega(double cantidad) {
     entregas.add(Entrega(fecha: DateTime.now(), cantidad: cantidad));
     cantidadRestante -= cantidad;
@@ -47,11 +45,10 @@ class Valorizacion {
     if (numeroOrden != null) this.numeroOrden = numeroOrden;
     if (montoContrato != null) this.montoContrato = montoContrato;
     if (nombreContratista != null) this.nombreContratista = nombreContratista;
-    if (descripcionServicio != null) this.descripcionServicio = descripcionServicio;
+    if (descripcionServicio != null)
+      this.descripcionServicio = descripcionServicio;
     if (fechaServicio != null) this.fechaServicio = fechaServicio;
     if (nombreServicio != null) this.nombreServicio = nombreServicio;
-    if (condicionesPago != null) this.condicionesPago = condicionesPago;
     if (cantidadTotal != null) this.cantidadTotal = cantidadTotal;
   }
 }
-

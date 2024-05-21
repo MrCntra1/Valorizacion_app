@@ -103,8 +103,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
             _buildDetailRow(
                 'Nombre del Servicio:', widget.valorizacion.nombreServicio),
             _buildDetailRow(
-                'Condiciones de Pago:', widget.valorizacion.condicionesPago),
-            _buildDetailRow(
                 'Cantidad Total:', '${widget.valorizacion.cantidadTotal} m3'),
             _buildDetailRow('Cantidad Restante:',
                 '${widget.valorizacion.cantidadRestante} m3'),
@@ -125,9 +123,12 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
               onPressed: widget.valorizacion.cantidadRestante > 0
                   ? _registrarEntrega
                   : null,
-              child: Text('Registrar Entrega',
-                style: TextStyle(color: Colors.white,
-                ),),
+              child: Text(
+                'Registrar Entrega',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
             SizedBox(height: 20),
             Text('Entregas Realizadas:',
@@ -136,10 +137,8 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
               return ListTile(
                 title: Text('${entrega.cantidad} m3 entregados'),
                 subtitle: Text('Fecha: ${entrega.fecha.toString()}'),
-                
               );
             }).toList(),
-            
           ],
         ),
       ),

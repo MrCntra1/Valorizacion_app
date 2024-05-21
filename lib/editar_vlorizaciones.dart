@@ -7,7 +7,8 @@ class EditarValorizacionScreen extends StatefulWidget {
   EditarValorizacionScreen({required this.valorizacion});
 
   @override
-  _EditarValorizacionScreenState createState() => _EditarValorizacionScreenState();
+  _EditarValorizacionScreenState createState() =>
+      _EditarValorizacionScreenState();
 }
 
 class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
@@ -24,14 +25,20 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
   @override
   void initState() {
     super.initState();
-    _numeroOrdenController = TextEditingController(text: widget.valorizacion.numeroOrden);
-    _montoContratoController = TextEditingController(text: widget.valorizacion.montoContrato.toString());
-    _nombreContratistaController = TextEditingController(text: widget.valorizacion.nombreContratista);
-    _descripcionServicioController = TextEditingController(text: widget.valorizacion.descripcionServicio);
-    _fechaServicioController = TextEditingController(text: widget.valorizacion.fechaServicio.toString());
-    _nombreServicioController = TextEditingController(text: widget.valorizacion.nombreServicio);
-    _condicionesPagoController = TextEditingController(text: widget.valorizacion.condicionesPago);
-    _cantidadTotalController = TextEditingController(text: widget.valorizacion.cantidadTotal.toString());
+    _numeroOrdenController =
+        TextEditingController(text: widget.valorizacion.numeroOrden);
+    _montoContratoController = TextEditingController(
+        text: widget.valorizacion.montoContrato.toString());
+    _nombreContratistaController =
+        TextEditingController(text: widget.valorizacion.nombreContratista);
+    _descripcionServicioController =
+        TextEditingController(text: widget.valorizacion.descripcionServicio);
+    _fechaServicioController = TextEditingController(
+        text: widget.valorizacion.fechaServicio.toString());
+    _nombreServicioController =
+        TextEditingController(text: widget.valorizacion.nombreServicio);
+    _cantidadTotalController = TextEditingController(
+        text: widget.valorizacion.cantidadTotal.toString());
   }
 
   void _saveForm() {
@@ -43,7 +50,6 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
         descripcionServicio: _descripcionServicioController.text,
         fechaServicio: DateTime.parse(_fechaServicioController.text),
         nombreServicio: _nombreServicioController.text,
-        condicionesPago: _condicionesPagoController.text,
         cantidadTotal: double.parse(_cantidadTotalController.text),
       );
       Navigator.of(context).pop(updatedValorizacion);
@@ -71,13 +77,19 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
           child: ListView(
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
-              _buildTextField(_montoContratoController, 'Monto del Contrato', keyboardType: TextInputType.number),
-              _buildTextField(_nombreContratistaController, 'Nombre del Contratista'),
-              _buildTextField(_descripcionServicioController, 'Descripción del Servicio'),
-              _buildTextField(_fechaServicioController, 'Fecha del Servicio', keyboardType: TextInputType.datetime),
+              _buildTextField(_montoContratoController, 'Monto del Contrato',
+                  keyboardType: TextInputType.number),
+              _buildTextField(
+                  _nombreContratistaController, 'Nombre del Contratista'),
+              _buildTextField(
+                  _descripcionServicioController, 'Descripción del Servicio'),
+              _buildTextField(_fechaServicioController, 'Fecha del Servicio',
+                  keyboardType: TextInputType.datetime),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              _buildTextField(_condicionesPagoController, 'Condiciones de Pago'),
-              _buildTextField(_cantidadTotalController, 'Cantidad Total', keyboardType: TextInputType.number),
+              _buildTextField(
+                  _condicionesPagoController, 'Condiciones de Pago'),
+              _buildTextField(_cantidadTotalController, 'Cantidad Total',
+                  keyboardType: TextInputType.number),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
@@ -91,7 +103,8 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label, {TextInputType keyboardType = TextInputType.text}) {
+  Widget _buildTextField(TextEditingController controller, String label,
+      {TextInputType keyboardType = TextInputType.text}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(

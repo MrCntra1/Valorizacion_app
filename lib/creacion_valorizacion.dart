@@ -15,7 +15,6 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
   final _descripcionServicioController = TextEditingController();
   final _fechaServicioController = TextEditingController();
   final _nombreServicioController = TextEditingController();
-  final _condicionesPagoController = TextEditingController();
   final _cantidadTotalController = TextEditingController();
   DateTime? _selectedDate;
 
@@ -28,7 +27,6 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
         descripcionServicio: _descripcionServicioController.text,
         fechaServicio: _selectedDate!,
         nombreServicio: _nombreServicioController.text,
-        condicionesPago: _condicionesPagoController.text,
         cantidadTotal: double.parse(_cantidadTotalController.text),
       );
 
@@ -59,7 +57,6 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
     _descripcionServicioController.dispose();
     _fechaServicioController.dispose();
     _nombreServicioController.dispose();
-    _condicionesPagoController.dispose();
     _cantidadTotalController.dispose();
     super.dispose();
   }
@@ -85,6 +82,8 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
           child: ListView(
             children: [
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
+              _buildTextField(_cantidadTotalController, 'Cantidad Total en m3',
+                  keyboardType: TextInputType.number),
               _buildTextField(_montoContratoController, 'Monto del Contrato',
                   keyboardType: TextInputType.number),
               _buildTextField(
@@ -100,17 +99,16 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
                 ),
               ),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              _buildTextField(
-                  _condicionesPagoController, 'Condiciones de Pago'),
-              _buildTextField(_cantidadTotalController, 'Cantidad Total en m3',
-                  keyboardType: TextInputType.number),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: _saveForm,
-                child: Text('Guardar',
-                style: TextStyle(color: Colors.white,
-                ),),
+                child: Text(
+                  'Guardar',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),
