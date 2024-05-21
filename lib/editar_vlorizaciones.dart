@@ -19,7 +19,6 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
   late TextEditingController _descripcionServicioController;
   late TextEditingController _fechaServicioController;
   late TextEditingController _nombreServicioController;
-  late TextEditingController _condicionesPagoController;
   late TextEditingController _cantidadTotalController;
 
   @override
@@ -86,8 +85,6 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
               _buildTextField(_fechaServicioController, 'Fecha del Servicio',
                   keyboardType: TextInputType.datetime),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              _buildTextField(
-                  _condicionesPagoController, 'Condiciones de Pago'),
               _buildTextField(_cantidadTotalController, 'Cantidad Total',
                   keyboardType: TextInputType.number),
               SizedBox(height: 20),

@@ -14,6 +14,7 @@ class inicio extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
