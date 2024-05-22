@@ -46,6 +46,13 @@ class Configuracion extends StatelessWidget {
                 // Acción cuando se toca la ayuda
               },
             ),
+            ListTile(
+              leading: Icon(Icons.help),
+              title: Text('Editar Valores'),
+              onTap: () {
+                // Acción cuando se toca la ayuda
+              },
+            ),
           ],
         ),
       ),
