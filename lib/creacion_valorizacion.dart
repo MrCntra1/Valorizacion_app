@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'global_config.dart';
 import 'valorizaciones.dart';
 
 class NuevaValorizacion extends StatefulWidget {
@@ -10,19 +12,45 @@ class NuevaValorizacion extends StatefulWidget {
 class _NuevaValorizacionState extends State<NuevaValorizacion> {
   final _formKey = GlobalKey<FormState>();
   final _numeroOrdenController = TextEditingController();
-  final _montoContratoController = TextEditingController();
   final _nombreContratistaController = TextEditingController();
   final _descripcionServicioController = TextEditingController();
   final _fechaServicioController = TextEditingController();
   final _nombreServicioController = TextEditingController();
   final _cantidadTotalController = TextEditingController();
+  double _resultado = 0.0;
   DateTime? _selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    _cantidadTotalController.addListener(_calcularResultado);
+  }
+
+  @override
+  void dispose() {
+    _numeroOrdenController.dispose();
+    _nombreContratistaController.dispose();
+    _descripcionServicioController.dispose();
+    _fechaServicioController.dispose();
+    _nombreServicioController.dispose();
+    _cantidadTotalController.dispose();
+    super.dispose();
+  }
+
+  void _calcularResultado() {
+    final cantidad = double.tryParse(_cantidadTotalController.text) ?? 0.0;
+    final multiplicador =
+        Provider.of<GlobalConfig>(context, listen: false).multiplicador;
+    setState(() {
+      _resultado = cantidad * multiplicador;
+    });
+  }
 
   void _saveForm() {
     if (_formKey.currentState!.validate()) {
       final nuevaValorizacion = Valorizacion(
         numeroOrden: _numeroOrdenController.text,
-        montoContrato: double.parse(_montoContratoController.text),
+        montoContrato: _resultado,
         nombreContratista: _nombreContratistaController.text,
         descripcionServicio: _descripcionServicioController.text,
         fechaServicio: _selectedDate!,
@@ -50,18 +78,6 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
   }
 
   @override
-  void dispose() {
-    _numeroOrdenController.dispose();
-    _montoContratoController.dispose();
-    _nombreContratistaController.dispose();
-    _descripcionServicioController.dispose();
-    _fechaServicioController.dispose();
-    _nombreServicioController.dispose();
-    _cantidadTotalController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -84,8 +100,14 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
               _buildTextField(_cantidadTotalController, 'Cantidad Total en m3',
                   keyboardType: TextInputType.number),
-              _buildTextField(_montoContratoController, 'Monto del Contrato',
-                  keyboardType: TextInputType.number),
+              SizedBox(height: 16.0),
+              Consumer<GlobalConfig>(
+                builder: (context, config, child) {
+                  return Text(
+                      'Monto de contrato: ${_cantidadTotalController.text.isEmpty ? 0 : _resultado}');
+                },
+              ),
+              SizedBox(height: 16.0),
               _buildTextField(
                   _nombreContratistaController, 'Nombre del Contratista'),
               _buildTextField(

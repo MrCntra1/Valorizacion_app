@@ -44,7 +44,7 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
     if (_formKey.currentState!.validate()) {
       final updatedValorizacion = Valorizacion(
         numeroOrden: _numeroOrdenController.text,
-        montoContrato: double.parse(_montoContratoController.text),
+        montoContrato: widget.valorizacion.montoContrato,
         nombreContratista: _nombreContratistaController.text,
         descripcionServicio: _descripcionServicioController.text,
         fechaServicio: DateTime.parse(_fechaServicioController.text),
@@ -79,7 +79,7 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
               _buildTextField(_cantidadTotalController, 'Cantidad Total m3',
                   keyboardType: TextInputType.number),
               _buildTextField(_montoContratoController, 'Monto del Contrato',
-                  keyboardType: TextInputType.number),
+                  keyboardType: TextInputType.number, readOnly: true),
               _buildTextField(
                   _nombreContratistaController, 'Nombre del Contratista'),
               _buildTextField(
@@ -106,21 +106,23 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
   }
 
   Widget _buildTextField(TextEditingController controller, String label,
-      {TextInputType keyboardType = TextInputType.text}) {
+      {TextInputType keyboardType = TextInputType.text,
+      bool readOnly = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
+        readOnly: readOnly,
         decoration: InputDecoration(
           labelText: label,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Campo requerido';
+            return 'Por favor ingrese $label';
           }
           return null;
         },
