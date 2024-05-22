@@ -91,7 +91,10 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: _saveForm,
-                child: Text('Guardar'),
+                child: Text('Guardar',
+                 style: TextStyle(
+                  color: Colors.white,
+                ),),
               ),
             ],
           ),
