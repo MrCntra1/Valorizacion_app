@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'detalles_valorizacion.dart';
 import 'valorizaciones.dart';
 import 'creacion_valorizacion.dart';
+import 'configuracion.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _HomeState extends State<Home> {
 
   void _addValorizacion(Valorizacion valorizacion) {
     setState(() {
-      valorizaciones.add(valorizacion);  // Añadir valorización a la lista
+      valorizaciones.add(valorizacion);
     });
   }
 
@@ -23,6 +24,19 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Valorizaciones'),
         backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Configuracion(),
+                  settings: RouteSettings(arguments: "From Home"),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(8.0),
@@ -55,12 +69,14 @@ class _HomeState extends State<Home> {
                   return Card(
                     child: ListTile(
                       title: Text('Valorización #${valorizacion.numeroOrden}'),
-                      subtitle: Text('${valorizacion.descripcionServicio}\nRestante: ${valorizacion.cantidadRestante} m3'),
+                      subtitle: Text(
+                          '${valorizacion.descripcionServicio}\nRestante: ${valorizacion.cantidadRestante} m3'),
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => DetalleValorizacion(valorizacion: valorizacion),
+                            builder: (context) =>
+                                DetalleValorizacion(valorizacion: valorizacion),
                           ),
                         );
                       },
