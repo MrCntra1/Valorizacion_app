@@ -53,7 +53,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
           descripcionServicio: resultado.descripcionServicio,
           fechaServicio: resultado.fechaServicio,
           nombreServicio: resultado.nombreServicio,
-          condicionesPago: resultado.condicionesPago,
+      
           cantidadTotal: resultado.cantidadTotal,
         );
       });
