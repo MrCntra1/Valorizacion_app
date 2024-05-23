@@ -1,12 +1,15 @@
+import 'dart:io';
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'editar_valorizaciones.dart';
 import 'valorizaciones.dart';
 
 class DetalleValorizacion extends StatefulWidget {
   final Valorizacion valorizacion;
 
-  DetalleValorizacion({required this.valorizacion});
+  const DetalleValorizacion({super.key, required this.valorizacion});
 
   @override
   _DetalleValorizacionState createState() => _DetalleValorizacionState();
@@ -35,7 +38,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
   }
 
   void _editarValorizacion() async {
-    // Implementar la navegación a la pantalla de edición y actualizar los datos y datos
     final resultado = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
@@ -45,7 +47,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
 
     if (resultado != null) {
       setState(() {
-        // Actualizar la valorización con los datos editados
         widget.valorizacion.actualizar(
           numeroOrden: resultado.numeroOrden,
           montoContrato: resultado.montoContrato,
@@ -59,28 +60,88 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
     }
   }
 
+  Future<void> _downloadExcel() async {
+    var status = await Permission.storage.request();
+    if (status.isGranted) {
+      var excel = Excel.createExcel();
+      Sheet sheetObject = excel['Sheet1'];
+
+      // Encabezados
+      sheetObject.appendRow([
+        'Número de Orden',
+        'Nombre del Contratista',
+        'Descripción del Servicio',
+        'Fecha del Servicio',
+        'Nombre del Servicio',
+        'Monto del Contrato',
+        'Cantidad Total m3',
+        'Cantidad Restante m3'
+      ]);
+
+      // Datos
+      sheetObject.appendRow([
+        widget.valorizacion.numeroOrden,
+        widget.valorizacion.nombreContratista,
+        widget.valorizacion.descripcionServicio,
+        widget.valorizacion.fechaServicio.toString(),
+        widget.valorizacion.nombreServicio,
+        widget.valorizacion.montoContrato.toString(),
+        widget.valorizacion.cantidadTotal.toString(),
+        widget.valorizacion.cantidadRestante.toString()
+      ]);
+
+      for (var entrega in widget.valorizacion.entregas) {
+        sheetObject.appendRow([
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '${entrega.cantidad} m3 entregados',
+          '${entrega.restante} restante',
+          entrega.fecha.toString()
+        ]);
+      }
+
+      final directory = await getExternalStorageDirectory();
+      String filePath =
+          '${directory?.path}/valorizacion_${widget.valorizacion.numeroOrden}.xlsx';
+      var fileBytes = excel.save();
+      File(filePath)
+        ..createSync(recursive: true)
+        ..writeAsBytesSync(fileBytes!);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Archivo Excel descargado en $filePath')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Permiso de almacenamiento denegado')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Valorización'),
+        title: const Text('Valorización'),
         backgroundColor: Colors.blue,
         actions: [
           IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: _editarValorizacion,
           ),
           IconButton(
-            icon: Icon(Icons.download),
-            onPressed: () {
-              // Implementar la lógica de descarga aquí
-            },
+            icon: const Icon(Icons.download),
+            onPressed: _downloadExcel,
           ),
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(16.0),
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
@@ -105,7 +166,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
                 '${widget.valorizacion.cantidadTotal} m3'),
             _buildDetailRow('Cantidad Restante m3:',
                 '${widget.valorizacion.cantidadRestante} m3'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
               controller: _cantidadController,
               keyboardType: TextInputType.number,
@@ -116,21 +177,21 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               onPressed: widget.valorizacion.cantidadRestante > 0
                   ? _registrarEntrega
                   : null,
-              child: Text(
+              child: const Text(
                 'Registrar Entrega',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Text('Entregas Realizadas:',
+            const SizedBox(height: 20),
+            const Text('Entregas Realizadas:',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             ...widget.valorizacion.entregas.map((entrega) {
               return ListTile(
@@ -143,7 +204,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
                   ],
                 ),
               );
-            }).toList(),
+            }),
           ],
         ),
       ),
@@ -156,7 +217,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
           Text(value),
         ],
       ),

@@ -7,6 +7,8 @@ import 'configuracion.dart';
 import 'global_config.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -31,16 +33,16 @@ class _HomeState extends State<Home> {
         return Scaffold(
           
           appBar: AppBar(
-            title: Text('Valorizaciones'),
+            title: const Text('Valorizaciones'),
             backgroundColor: Colors.blue,
             actions: [
               IconButton(
-                icon: Icon(Icons.settings),
+                icon: const Icon(Icons.settings),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => ConfiguracionPage(),
-                      settings: RouteSettings(arguments: "From Home"),
+                      settings: const RouteSettings(arguments: "From Home"),
                     ),
                   );
                 },
@@ -48,8 +50,8 @@ class _HomeState extends State<Home> {
             ],
           ),
           body: Container(
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(8.0),
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.white, Colors.white],
                 begin: Alignment.topCenter,
@@ -62,7 +64,7 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       hintText: 'Buscar valorización',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -81,7 +83,7 @@ class _HomeState extends State<Home> {
                               Text('Valorización #${valorizacion.numeroOrden}'),
                           subtitle: Text(
                               '${valorizacion.descripcionServicio}\nRestante: ${valorizacion.cantidadRestante} m3'),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -103,7 +105,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  icon: Icon(Icons.home),
+                  icon: const Icon(Icons.home),
                   onPressed: () {},
                 ),
                 IconButton(

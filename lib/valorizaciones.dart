@@ -49,8 +49,9 @@ class Valorizacion {
     if (numeroOrden != null) this.numeroOrden = numeroOrden;
     if (montoContrato != null) this.montoContrato = montoContrato;
     if (nombreContratista != null) this.nombreContratista = nombreContratista;
-    if (descripcionServicio != null)
+    if (descripcionServicio != null) {
       this.descripcionServicio = descripcionServicio;
+    }
     if (fechaServicio != null) this.fechaServicio = fechaServicio;
     if (nombreServicio != null) this.nombreServicio = nombreServicio;
     if (cantidadTotal != null) this.cantidadTotal = cantidadTotal;

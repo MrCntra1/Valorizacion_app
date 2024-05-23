@@ -4,7 +4,7 @@ import 'valorizaciones.dart';
 class EditarValorizacionScreen extends StatefulWidget {
   final Valorizacion valorizacion;
 
-  EditarValorizacionScreen({required this.valorizacion});
+  const EditarValorizacionScreen({super.key, required this.valorizacion});
 
   @override
   _EditarValorizacionScreenState createState() =>
@@ -59,12 +59,12 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Valorización'),
+        title: const Text('Editar Valorización'),
         backgroundColor: Colors.blue,
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(16.0),
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
@@ -87,11 +87,11 @@ class _EditarValorizacionScreenState extends State<EditarValorizacionScreen> {
               _buildTextField(_fechaServicioController, 'Fecha del Servicio',
                   keyboardType: TextInputType.datetime),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: _saveForm,
-                child: Text(
+                child: const Text(
                   'Guardar',
                   style: TextStyle(
                     color: Colors.white,

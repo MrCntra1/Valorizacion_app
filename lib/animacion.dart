@@ -5,6 +5,8 @@ import 'pantalla_principal.dart';
 void main() => runApp(animcion());
 
 class animcion extends StatelessWidget {
+  const animcion({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +21,8 @@ class animcion extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -31,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 3), () {});
+    await Future.delayed(const Duration(seconds: 3), () {});
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Home()),
@@ -40,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.blue,
       body: Center(
         child: SpinKitFadingCube(
@@ -53,13 +57,15 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pantalla Principal'),
+        title: const Text('Pantalla Principal'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Bienvenido a la pantalla principal'),
       ),
     );

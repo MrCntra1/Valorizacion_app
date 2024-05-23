@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'valorizaciones.dart';
 
 class ValorizacionProvider with ChangeNotifier {
-  List<Valorizacion> _valorizaciones = [];
+  final List<Valorizacion> _valorizaciones = [];
 
   List<Valorizacion> get valorizaciones => _valorizaciones;
 
