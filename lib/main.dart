@@ -9,6 +9,8 @@ void main() {
 }
 
 class inicio extends StatelessWidget {
+  const inicio({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -28,15 +30,17 @@ class inicio extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Página Principal'),
+        title: const Text('Página Principal'),
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text('Nueva Valorización'),
+          child: const Text('Nueva Valorización'),
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => NuevaValorizacion()),

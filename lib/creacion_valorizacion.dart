@@ -5,6 +5,8 @@ import 'global_config.dart';
 import 'valorizaciones.dart';
 
 class NuevaValorizacion extends StatefulWidget {
+  const NuevaValorizacion({super.key});
+
   @override
   _NuevaValorizacionState createState() => _NuevaValorizacionState();
 }
@@ -82,12 +84,12 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
     return Scaffold(
       
       appBar: AppBar(
-        title: Text('Nueva Valorización'),
+        title: const Text('Nueva Valorización'),
         backgroundColor: Colors.blue,
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(16.0),
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.white, Colors.white],
             begin: Alignment.topCenter,
@@ -101,14 +103,14 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
               _buildTextField(_numeroOrdenController, 'Número de Orden'),
               _buildTextField(_cantidadTotalController, 'Cantidad Total en m3',
                   keyboardType: TextInputType.number),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Consumer<GlobalConfig>(
                 builder: (context, config, child) {
                   return Text(
                       'Monto de contrato: ${_cantidadTotalController.text.isEmpty ? 0 : _resultado}');
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               _buildTextField(
                   _nombreContratistaController, 'Nombre del Contratista'),
               _buildTextField(
@@ -122,11 +124,11 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
                 ),
               ),
               _buildTextField(_nombreServicioController, 'Nombre del Servicio'),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 onPressed: _saveForm,
-                child: Text(
+                child: const Text(
                   'Guardar',
                   style: TextStyle(
                     color: Colors.white,
