@@ -64,7 +64,7 @@ flutter:
     - lib/img/edit.png
     - lib/img/home.png
     - lib/img/save.png
-    - lib/img/iconAPP.png
+    
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
