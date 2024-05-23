@@ -35,7 +35,7 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
   }
 
   void _editarValorizacion() async {
-    // Implementar la navegación a la pantalla de edición y actualizar los datos
+    // Implementar la navegación a la pantalla de edición y actualizar los datos y datos
     final resultado = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
