@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class GlobalConfig extends ChangeNotifier {
-  double _multiplicador = 1.0;
+  double _multiplicador = 10;
 
   double get multiplicador => _multiplicador;
 

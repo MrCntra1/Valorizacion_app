@@ -4,9 +4,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'pantalla_principal.dart'; // Asegúrate de agregar flutter_spinkit a tu pubspec.yaml
 
-void main() => runApp(MyApp());
+void main() => runApp(animcion());
 
-class MyApp extends StatelessWidget {
+class animcion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
