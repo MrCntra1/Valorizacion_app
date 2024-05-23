@@ -60,8 +60,17 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
     }
   }
 
+  Future<void> _requestPermission() async {
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }
+  }
+
   Future<void> _downloadExcel() async {
-    var status = await Permission.storage.request();
+    await _requestPermission();
+
+    var status = await Permission.storage.status;
     if (status.isGranted) {
       var excel = Excel.createExcel();
       Sheet sheetObject = excel['Sheet1'];
