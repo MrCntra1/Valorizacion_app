@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-import 'pantalla_principal.dart'; // Asegúrate de agregar flutter_spinkit a tu pubspec.yaml
+import 'pantalla_principal.dart';
 
 void main() => runApp(animcion());
 
@@ -10,6 +8,7 @@ class animcion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

@@ -14,7 +14,6 @@ class inicio extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalConfig()),
-        // Agrega otros providers aquí si es necesario
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
