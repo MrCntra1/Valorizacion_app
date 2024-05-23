@@ -57,13 +57,14 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - lib\img\doc.png
-    - lib\img\download.png
-    - lib\img\add-file.png
-    - lib\img\delate.png
-    - lib\img\edit.png
+    - lib/img/doc.png
+    - lib/img/download.png
+    - lib/img/add-file.png
+    - lib/img/delate.png
+    - lib/img/edit.png
     - lib/img/home.png
     - lib/img/save.png
+    - lib/img/iconAPP.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
