@@ -1,8 +1,11 @@
 class Entrega {
   final DateTime fecha;
   final double cantidad;
+  final double restante;
 
-  Entrega({required this.fecha, required this.cantidad});
+  Entrega({required this.fecha, required this.cantidad, required this.restante});
+
+  
 }
 
 class Valorizacion {
@@ -28,8 +31,9 @@ class Valorizacion {
         entregas = [];
 
   void registrarEntrega(double cantidad) {
-    entregas.add(Entrega(fecha: DateTime.now(), cantidad: cantidad));
     cantidadRestante -= cantidad;
+    entregas.add(Entrega(fecha: DateTime.now(), cantidad: cantidad, restante :cantidadRestante)); 
+    
   }
 
   void actualizar({

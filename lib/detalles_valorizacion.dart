@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'editar_valorizaciones.dart';
 import 'valorizaciones.dart';
 
@@ -136,7 +137,11 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
             ...widget.valorizacion.entregas.map((entrega) {
               return ListTile(
                 title: Text('${entrega.cantidad} m3 entregados'),
-                subtitle: Text('Fecha: ${entrega.fecha.toString()}'),
+                subtitle: Column(crossAxisAlignment:CrossAxisAlignment.start ,
+                children: [
+                  Text('Cantidad restante ${entrega.restante}'),
+                  Text('Fecha ${entrega.fecha}'),
+                ],),
               );
             }).toList(),
           ],
