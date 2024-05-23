@@ -24,7 +24,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
     if (cantidad == null ||
         cantidad <= 0 ||
         cantidad > widget.valorizacion.cantidadRestante) {
-      // Mostrar un error si la cantidad no es válida
       return;
     }
 
@@ -54,7 +53,6 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
           descripcionServicio: resultado.descripcionServicio,
           fechaServicio: resultado.fechaServicio,
           nombreServicio: resultado.nombreServicio,
-      
           cantidadTotal: resultado.cantidadTotal,
         );
       });
@@ -137,11 +135,13 @@ class _DetalleValorizacionState extends State<DetalleValorizacion> {
             ...widget.valorizacion.entregas.map((entrega) {
               return ListTile(
                 title: Text('${entrega.cantidad} m3 entregados'),
-                subtitle: Column(crossAxisAlignment:CrossAxisAlignment.start ,
-                children: [
-                  Text('Cantidad restante ${entrega.restante}'),
-                  Text('Fecha ${entrega.fecha}'),
-                ],),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Cantidad restante ${entrega.restante}'),
+                    Text('Fecha ${entrega.fecha}'),
+                  ],
+                ),
               );
             }).toList(),
           ],
