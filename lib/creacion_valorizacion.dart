@@ -80,6 +80,7 @@ class _NuevaValorizacionState extends State<NuevaValorizacion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text('Nueva Valorización'),
         backgroundColor: Colors.blue,
