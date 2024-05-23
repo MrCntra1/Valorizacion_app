@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'global_config.dart';
 import 'animacion.dart';
-import 'creacion_valorizacion.dart';  // Asegúrate de tener este import correctamente configurado
+import 'creacion_valorizacion.dart';
 
 void main() {
   runApp(inicio());
