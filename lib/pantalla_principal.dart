@@ -22,12 +22,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    
     return ChangeNotifierProvider(
       // Envuelve el Scaffold con ChangeNotifierProvider
       create: (_) => globalConfig, // Cambia esto a builder
       builder: (context, child) {
         // Añade este builder
         return Scaffold(
+          
           appBar: AppBar(
             title: Text('Valorizaciones'),
             backgroundColor: Colors.blue,
