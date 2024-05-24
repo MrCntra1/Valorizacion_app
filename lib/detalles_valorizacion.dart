@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'detalle_valorizacion_widget.dart'; // Importa el widget DetalleValorizacion
-import 'valorizaciones.dart'; // Asegúrate de importar las dependencias necesarias
+import 'detalle_valorizacion_widget.dart';
+import 'valorizaciones.dart';
 
 class DetallesValorizacionPage extends StatelessWidget {
   final Valorizacion valorizacion;
@@ -15,8 +15,7 @@ class DetallesValorizacionPage extends StatelessWidget {
         title: Text('Detalles de la Valorización'),
         backgroundColor: Colors.blue,
       ),
-      body: DetalleValorizacion(
-          valorizacion: valorizacion), // Utiliza el widget DetalleValorizacion
+      body: DetalleValorizacion(valorizacion: valorizacion),
     );
   }
 }
