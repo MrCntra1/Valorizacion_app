@@ -108,7 +108,6 @@ class _HomeState extends State<Home> {
                 IconButton(
                   icon: Image.asset('lib/img/add-file.png'),
                   onPressed: () async {
-                    // Solicitar permiso al usuario para almacenar datos
                     final SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     bool? permissionGranted =
