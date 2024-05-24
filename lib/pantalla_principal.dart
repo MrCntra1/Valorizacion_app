@@ -113,37 +113,17 @@ class _HomeState extends State<Home> {
                     bool? permissionGranted =
                         prefs.getBool('permissionGranted');
                     if (permissionGranted == null || !permissionGranted) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text('Permiso necesario'),
-                          content: Text(
-                              '¿Permitir que la aplicación almacene datos en el dispositivo?'),
-                          actions: [
-                            TextButton(
-                              onPressed: () async {
-                                await prefs.setBool('permissionGranted', true);
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Permitir'),
-                            ),
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: Text('Cancelar'),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      // Si ya se ha dado permiso, continuar con la acción
-                      final result = await Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => NuevaValorizacion(),
-                        ),
-                      );
-                      if (result != null) {
-                        _addValorizacion(result);
-                      }
+                      // Solicitar permiso directamente
+                      await prefs.setBool('permissionGranted', true);
+                    }
+                    // Continuar con la acción
+                    final result = await Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => NuevaValorizacion(),
+                      ),
+                    );
+                    if (result != null) {
+                      _addValorizacion(result);
                     }
                   },
                 ),
