@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'detalles_valorizacion.dart';
 import 'valorizaciones.dart';
 import 'creacion_valorizacion.dart';
 import 'configuracion.dart';
 import 'global_config.dart';
+import 'detalle_valorizacion_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,14 +24,12 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
     return ChangeNotifierProvider(
       // Envuelve el Scaffold con ChangeNotifierProvider
       create: (_) => globalConfig, // Cambia esto a builder
       builder: (context, child) {
         // Añade este builder
         return Scaffold(
-          
           appBar: AppBar(
             title: const Text('Valorizaciones'),
             backgroundColor: Colors.blue,
