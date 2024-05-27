@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../models/valorization.dart';
 import '../widgets/valorization_card.dart';
 import 'edit_values_screen.dart';
