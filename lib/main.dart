@@ -1,51 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'global_config.dart';
-import 'animacion.dart';
-import 'creacion_valorizacion.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'screens/home_screen.dart';
 
 void main() {
-  runApp(inicio());
+  runApp(RaymiApp());
 }
 
-class inicio extends StatelessWidget {
-  const inicio({super.key});
-
+class RaymiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => GlobalConfig()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Valorizaciones',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: animcion(),
+    return MaterialApp(
+      title: 'RaymiApp',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: SplashScreen(),
     );
   }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _navigateToHome();
+  }
+
+  _navigateToHome() async {
+    await Future.delayed(Duration(seconds: 3), () {});
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Página Principal'),
-      ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('Nueva Valorización'),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => NuevaValorizacion()),
-            );
-          },
+        child: SpinKitCircle(
+          color: Colors.blue,
+          size: 50.0,
         ),
       ),
     );
