@@ -3,12 +3,14 @@ import '../models/valorization.dart';
 
 class ValorizationCard extends StatelessWidget {
   final Valorization valorization;
-  final Function onEdit;
-  final Function onDelete;
-  final Function onDownload;
+  final Function(Valorization) onView;
+  final Function(Valorization) onEdit;
+  final Function(Valorization) onDelete;
+  final Function(Valorization) onDownload;
 
   ValorizationCard({
     required this.valorization,
+    required this.onView,
     required this.onEdit,
     required this.onDelete,
     required this.onDownload,
@@ -23,6 +25,10 @@ class ValorizationCard extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
+            IconButton(
+              icon: Icon(Icons.visibility),
+              onPressed: () => onView(valorization),
+            ),
             IconButton(
               icon: Icon(Icons.edit),
               onPressed: () => onEdit(valorization),

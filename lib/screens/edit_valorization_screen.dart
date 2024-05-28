@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 class EditValorizationScreen extends StatefulWidget {
   final Valorization valorization;
 
-  EditValorizationScreen({required this.valorization});
+  EditValorizationScreen({Key? key, required this.valorization}) : super(key: key);
 
   @override
   _EditValorizationScreenState createState() => _EditValorizationScreenState();
@@ -41,6 +41,18 @@ class _EditValorizationScreenState extends State<EditValorizationScreen> {
       setState(() {
         _serviceDate = picked;
       });
+  }
+
+  _saveValorization() {
+    setState(() {
+      widget.valorization.totalQuantity = double.parse(_quantityController.text);
+      widget.valorization.contractAmount = double.parse(_contractAmountController.text);
+      widget.valorization.contractorName = _contractorNameController.text;
+      widget.valorization.serviceDescription = _serviceDescriptionController.text;
+      widget.valorization.serviceDate = _serviceDate;
+      widget.valorization.serviceName = _serviceNameController.text;
+    });
+    Navigator.pop(context, widget.valorization);
   }
 
   @override
@@ -92,10 +104,7 @@ class _EditValorizationScreenState extends State<EditValorizationScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Save the edited valorization
-                Navigator.pop(context);
-              },
+              onPressed: _saveValorization,
               child: Text('Save'),
             ),
           ],

@@ -3,6 +3,10 @@ import 'package:intl/intl.dart';
 import '../models/valorization.dart';
 
 class CreateValorizationScreen extends StatefulWidget {
+  final List<Valorization> valorizations;
+
+  CreateValorizationScreen({Key? key, required this.valorizations}) : super(key: key);
+
   @override
   _CreateValorizationScreenState createState() => _CreateValorizationScreenState();
 }
@@ -19,7 +23,12 @@ class _CreateValorizationScreenState extends State<CreateValorizationScreen> {
   @override
   void initState() {
     super.initState();
-    _orderNumberController.text = 'VA-000001'; // This should be auto-generated
+    _orderNumberController.text = _generateOrderNumber();
+  }
+
+  String _generateOrderNumber() {
+    int count = widget.valorizations.length + 1;
+    return 'VA-${count.toString().padLeft(6, '0')}';
   }
 
   _selectDate(BuildContext context) async {

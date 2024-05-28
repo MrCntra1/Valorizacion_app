@@ -1,11 +1,11 @@
 class Valorization {
-  final String orderNumber;
-  final double totalQuantity;
-  final double contractAmount;
-  final String contractorName;
-  final String serviceDescription;
-  final DateTime serviceDate;
-  final String serviceName;
+  String orderNumber;
+  double totalQuantity;
+  double contractAmount;
+  String contractorName;
+  String serviceDescription;
+  DateTime serviceDate;
+  String serviceName;
 
   Valorization({
     required this.orderNumber,
@@ -16,4 +16,6 @@ class Valorization {
     required this.serviceDate,
     required this.serviceName,
   });
+
+  // Métodos para la conversión a/desde JSON si es necesario
 }

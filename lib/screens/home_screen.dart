@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../models/valorization.dart';
 import '../widgets/valorization_card.dart';
 import 'edit_values_screen.dart';
 import 'create_valorization_screen.dart';
 import 'edit_valorization_screen.dart';
+import 'view_valorization_screen.dart';
 import '../services/excel_service.dart';
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -70,13 +72,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     valorization.serviceDescription.contains(searchQuery)) {
                   return ValorizationCard(
                     valorization: valorization,
-                    onEdit: (valorization) {
+                    onView: (valorization) {
                       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewValorizationScreen(valorization: valorization),
+                        ),
+                      );
+                    },
+                    onEdit: (valorization) async {
+                      final updatedValorization = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => EditValorizationScreen(valorization: valorization),
                         ),
                       );
+                      if (updatedValorization != null) {
+                        setState(() {
+                          valorizations[index] = updatedValorization;
+                        });
+                      }
                     },
                     onDelete: (valorization) {
                       setState(() {
@@ -98,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () async {
           final newValorization = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateValorizationScreen()),
+            MaterialPageRoute(builder: (context) => CreateValorizationScreen(valorizations: valorizations)),
           );
           if (newValorization != null) {
             setState(() {
