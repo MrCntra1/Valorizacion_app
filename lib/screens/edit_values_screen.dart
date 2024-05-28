@@ -23,7 +23,7 @@ class EditValuesScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Save the new price value
+
                 Navigator.pop(context);
               },
               child: Text('Save'),

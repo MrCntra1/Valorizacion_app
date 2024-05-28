@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -14,6 +14,7 @@ class RaymiApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
   }
@@ -28,7 +29,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _requestPermissions();
     _navigateToHome();
+  }
+
+  Future<void> _requestPermissions() async {
+    if (await Permission.storage.request().isGranted) {
+      // Permisos concedidos
+    } else {
+      // Permisos no concedidos, manejar este caso adecuadamente
+      // Puedes mostrar un diálogo solicitando que el usuario habilite los permisos desde los ajustes
+    }
   }
 
   _navigateToHome() async {
@@ -43,10 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SpinKitCircle(
-          color: Colors.blue,
-          size: 50.0,
-        ),
+        child: CircularProgressIndicator(), // O usa SpinKit si prefieres
       ),
     );
   }

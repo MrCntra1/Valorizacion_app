@@ -16,6 +16,4 @@ class Valorization {
     required this.serviceDate,
     required this.serviceName,
   });
-
-  // Métodos para la conversión a/desde JSON si es necesario
 }

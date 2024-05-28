@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../models/valorization.dart';
 
 class CreateValorizationScreen extends StatefulWidget {
   @override
@@ -32,6 +33,19 @@ class _CreateValorizationScreenState extends State<CreateValorizationScreen> {
       setState(() {
         _serviceDate = picked;
       });
+  }
+
+  _saveValorization() {
+    final newValorization = Valorization(
+      orderNumber: _orderNumberController.text,
+      totalQuantity: double.parse(_quantityController.text),
+      contractAmount: double.parse(_contractAmountController.text),
+      contractorName: _contractorNameController.text,
+      serviceDescription: _serviceDescriptionController.text,
+      serviceDate: _serviceDate,
+      serviceName: _serviceNameController.text,
+    );
+    Navigator.pop(context, newValorization);
   }
 
   @override
@@ -78,10 +92,7 @@ class _CreateValorizationScreenState extends State<CreateValorizationScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Save the new valorization
-                Navigator.pop(context);
-              },
+              onPressed: _saveValorization,
               child: Text('Save'),
             ),
           ],
