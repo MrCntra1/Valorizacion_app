@@ -5,6 +5,7 @@ import 'edit_values_screen.dart';
 import 'create_valorization_screen.dart';
 import 'edit_valorization_screen.dart';
 import 'view_valorization_screen.dart';
+import 'download_excel_screen.dart';
 import '../services/excel_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -98,8 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         valorizations.remove(valorization);
                       });
                     },
-                    onDownload: (valorization) async {
-                      await excelService.createAndDownloadExcel([valorization]);
+                    onDownload: (valorization) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DownloadExcelScreen(valorization: valorization),
+                        ),
+                      );
                     },
                   );
                 }
