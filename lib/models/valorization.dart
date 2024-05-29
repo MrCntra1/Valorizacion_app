@@ -6,7 +6,7 @@ class Valorization {
   String serviceDescription;
   DateTime serviceDate;
   String serviceName;
-
+//figuero es un gil rctm
   Valorization({
     required this.orderNumber,
     required this.totalQuantity,
