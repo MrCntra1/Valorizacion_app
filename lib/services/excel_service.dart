@@ -10,24 +10,24 @@ class ExcelService {
 
     // Add column headers
     sheetObject.appendRow([
-      "Order Number",
-      "Total Quantity (m3)",
-      "Contract Amount",
-      "Contractor Name",
-      "Service Description",
-      "Service Date",
-      "Service Name"
+      TextCellValue('Order Number'),
+      TextCellValue('Total Quantity (m3)'),
+      TextCellValue('Contract Amount'),
+      TextCellValue('Contractor Name'),
+      TextCellValue('Service Description'),
+      TextCellValue('Service Date'),
+      TextCellValue('Service Name')
     ]);
 
     // Add row for valorization
     sheetObject.appendRow([
-      valorization.orderNumber,
-      valorization.totalQuantity,
-      valorization.contractAmount,
-      valorization.contractorName,
-      valorization.serviceDescription,
-      valorization.serviceDate.toIso8601String(),
-      valorization.serviceName
+      TextCellValue(valorization.orderNumber),
+      DoubleCellValue(valorization.totalQuantity),
+      DoubleCellValue(valorization.contractAmount),
+      TextCellValue(valorization.contractorName),
+      TextCellValue(valorization.serviceDescription),
+      DateTimeCellValue.fromDateTime(valorization.serviceDate),
+      TextCellValue(valorization.serviceName)
     ]);
 
     // Save the file

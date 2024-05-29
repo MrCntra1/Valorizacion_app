@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -29,17 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _requestPermissions();
     _navigateToHome();
-  }
-
-  Future<void> _requestPermissions() async {
-    if (await Permission.storage.request().isGranted) {
-      // Permisos concedidos
-    } else {
-      // Permisos no concedidos, manejar este caso adecuadamente
-      // Puedes mostrar un diálogo solicitando que el usuario habilite los permisos desde los ajustes
-    }
   }
 
   _navigateToHome() async {

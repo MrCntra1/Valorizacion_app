@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 class EditValorizationScreen extends StatefulWidget {
   final Valorization valorization;
 
-  EditValorizationScreen({Key? key, required this.valorization}) : super(key: key);
+  EditValorizationScreen({Key? key, required this.valorization})
+      : super(key: key);
 
   @override
   _EditValorizationScreenState createState() => _EditValorizationScreenState();
@@ -22,11 +23,16 @@ class _EditValorizationScreenState extends State<EditValorizationScreen> {
   @override
   void initState() {
     super.initState();
-    _quantityController = TextEditingController(text: widget.valorization.totalQuantity.toString());
-    _contractAmountController = TextEditingController(text: widget.valorization.contractAmount.toString());
-    _contractorNameController = TextEditingController(text: widget.valorization.contractorName);
-    _serviceDescriptionController = TextEditingController(text: widget.valorization.serviceDescription);
-    _serviceNameController = TextEditingController(text: widget.valorization.serviceName);
+    _quantityController = TextEditingController(
+        text: widget.valorization.totalQuantity.toString());
+    _contractAmountController = TextEditingController(
+        text: widget.valorization.contractAmount.toString());
+    _contractorNameController =
+        TextEditingController(text: widget.valorization.contractorName);
+    _serviceDescriptionController =
+        TextEditingController(text: widget.valorization.serviceDescription);
+    _serviceNameController =
+        TextEditingController(text: widget.valorization.serviceName);
     _serviceDate = widget.valorization.serviceDate;
   }
 
@@ -37,18 +43,22 @@ class _EditValorizationScreenState extends State<EditValorizationScreen> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
     );
-    if (picked != null && picked != _serviceDate)
+    if (picked != null && picked != _serviceDate) {
       setState(() {
         _serviceDate = picked;
       });
+    }
   }
 
   _saveValorization() {
     setState(() {
-      widget.valorization.totalQuantity = double.parse(_quantityController.text);
-      widget.valorization.contractAmount = double.parse(_contractAmountController.text);
+      widget.valorization.totalQuantity =
+          double.parse(_quantityController.text);
+      widget.valorization.contractAmount =
+          double.parse(_contractAmountController.text);
       widget.valorization.contractorName = _contractorNameController.text;
-      widget.valorization.serviceDescription = _serviceDescriptionController.text;
+      widget.valorization.serviceDescription =
+          _serviceDescriptionController.text;
       widget.valorization.serviceDate = _serviceDate;
       widget.valorization.serviceName = _serviceNameController.text;
     });
@@ -94,7 +104,8 @@ class _EditValorizationScreenState extends State<EditValorizationScreen> {
               decoration: InputDecoration(labelText: 'Service Description'),
             ),
             ListTile(
-              title: Text("Service Date: ${DateFormat('dd/MM/yyyy').format(_serviceDate)}"),
+              title: Text(
+                  "Service Date: ${DateFormat('dd/MM/yyyy').format(_serviceDate)}"),
               trailing: Icon(Icons.calendar_today),
               onTap: () => _selectDate(context),
             ),
