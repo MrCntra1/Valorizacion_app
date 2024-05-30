@@ -30,9 +30,9 @@ class ExcelService {
       TextCellValue(valorization.serviceName)
     ]);
 
-    // Save the file
-    var directory = await getExternalStorageDirectory();
-    var filePath = "${directory!.path}/valorization_${valorization.orderNumber}.xlsx";
+    // Save the file temporarily
+    var directory = await getTemporaryDirectory();
+    var filePath = "${directory.path}/valorization_${valorization.orderNumber}.xlsx";
     File(filePath)
       ..createSync(recursive: true)
       ..writeAsBytesSync(excel.encode()!);

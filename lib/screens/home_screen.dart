@@ -5,8 +5,8 @@ import 'edit_values_screen.dart';
 import 'create_valorization_screen.dart';
 import 'edit_valorization_screen.dart';
 import 'view_valorization_screen.dart';
-import 'download_excel_screen.dart';
-import '../services/excel_service.dart';
+import 'export_excel_screen.dart';
+import 'view_excel_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Valorization> valorizations = []; // Lista de valorizaciones
-  final ExcelService excelService = ExcelService();
   String searchQuery = "";
 
   @override
@@ -37,8 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
               // Add more actions here for other menu options
             },
             itemBuilder: (BuildContext context) {
-              return {'Profile', 'Notifications', 'Security', 'Help', 'Edit Values'}
-                  .map((String choice) {
+              return {
+                'Profile',
+                'Notifications',
+                'Security',
+                'Help',
+                'Edit Values'
+              }.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -77,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ViewValorizationScreen(valorization: valorization),
+                          builder: (context) => ViewValorizationScreen(
+                              valorization: valorization),
                         ),
                       );
                     },
@@ -85,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       final updatedValorization = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditValorizationScreen(valorization: valorization),
+                          builder: (context) => EditValorizationScreen(
+                              valorization: valorization),
                         ),
                       );
                       if (updatedValorization != null) {
@@ -99,11 +105,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         valorizations.remove(valorization);
                       });
                     },
-                    onDownload: (valorization) {
+                    onExport: (valorization) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DownloadExcelScreen(valorization: valorization),
+                          builder: (context) =>
+                              ViewExcelScreen(valorization: valorization),
                         ),
                       );
                     },
@@ -119,7 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () async {
           final newValorization = await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateValorizationScreen(valorizations: valorizations)),
+            MaterialPageRoute(
+                builder: (context) =>
+                    CreateValorizationScreen(valorizations: valorizations)),
           );
           if (newValorization != null) {
             setState(() {

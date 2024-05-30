@@ -6,14 +6,14 @@ class ValorizationCard extends StatelessWidget {
   final Function(Valorization) onView;
   final Function(Valorization) onEdit;
   final Function(Valorization) onDelete;
-  final Function(Valorization) onDownload;
+  final Function(Valorization) onExport;
 
   ValorizationCard({
     required this.valorization,
     required this.onView,
     required this.onEdit,
     required this.onDelete,
-    required this.onDownload,
+    required this.onExport,
   });
 
   @override
@@ -38,8 +38,8 @@ class ValorizationCard extends StatelessWidget {
               onPressed: () => onDelete(valorization),
             ),
             IconButton(
-              icon: Icon(Icons.download),
-              onPressed: () => onDownload(valorization),
+              icon: Icon(Icons.upload_file),
+              onPressed: () => onExport(valorization),
             ),
           ],
         ),
