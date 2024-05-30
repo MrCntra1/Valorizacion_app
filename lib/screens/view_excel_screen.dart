@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/valorization.dart';
-import 'export_excel_screen.dart';
 import '../services/excel_service.dart';
 import 'package:excel/excel.dart';
 import 'dart:io';
+import 'package:path_provider/path_provider.dart'; // Importa la biblioteca path_provider
 
 class ViewExcelScreen extends StatefulWidget {
   final Valorization valorization;
@@ -53,6 +53,19 @@ class _ViewExcelScreenState extends State<ViewExcelScreen> {
     });
   }
 
+  Future<void> _exportFile() async {
+    if (_filePath != null) {
+      final directory = await getExternalStorageDirectory();
+      final fileName = 'valorization_${widget.valorization.orderNumber}.xlsx';
+      final filePath = '${directory!.path}/$fileName';
+      final file = File(_filePath!);
+      await file.copy(filePath);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Archivo exportado en $filePath')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,15 +104,7 @@ class _ViewExcelScreenState extends State<ViewExcelScreen> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ExportExcelScreen(filePath: _filePath!),
-                      ),
-                    );
-                  },
+                  onPressed: _exportFile,
                   child: Text('Exportar'),
                 ),
               ],

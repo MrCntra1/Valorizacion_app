@@ -24,8 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.app_valorizacion"
-    compileSdk 34 // Cambiar de 33 a 34
-    ndkVersion flutter.ndkVersion
+    compileSdkVersion 33 // Aquí asegúrate de que esta versión sea la requerida por tus dependencias
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,11 +41,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.app_valorizacion"
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 23
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        minSdkVersion 23
     }
 
     buildTypes {
@@ -60,4 +58,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    // Aquí puedes agregar otras dependencias que necesites
+}

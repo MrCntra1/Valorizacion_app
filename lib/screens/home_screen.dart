@@ -5,8 +5,7 @@ import 'edit_values_screen.dart';
 import 'create_valorization_screen.dart';
 import 'edit_valorization_screen.dart';
 import 'view_valorization_screen.dart';
-import 'export_excel_screen.dart';
-import 'view_excel_screen.dart';
+import 'view_excel_screen.dart'; // Asegúrate de que este archivo esté bien definido
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
